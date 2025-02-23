@@ -9,3 +9,4 @@
 4. `poetry run python manage.py migrate`
 5. `poetry run python manage.py createsuperuser`
 6. `poetry run python manage.py runserver`
+7. To test, `poetry run pytest`
