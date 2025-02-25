@@ -52,6 +52,7 @@ DEFAULT_APPS = [
 ]
 THIRDPARTY_APPS = [
     "rest_framework",
+    "django_filters",
 ]
 INTERNAL_APPS = [
     "apps.users",
