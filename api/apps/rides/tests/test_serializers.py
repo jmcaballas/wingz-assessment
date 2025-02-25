@@ -8,7 +8,19 @@ from apps.rides.tests.factories import RideEventFactory, RideFactory
 class TestRideSerializer:
     def test_ride_serializer(self):
         ride = RideFactory()
+        ride_event = RideEventFactory(id_ride=ride)
+        ride.todays_ride_events = [ride_event]
         serializer = RideSerializer(ride)
+
+        todays_ride_events = [
+            {
+                "id_ride_event": ride_event.id_ride_event,
+                "id_ride": ride_event.id_ride.id_ride,
+                "description": ride_event.description,
+                "created_at": ride_event.created_at.isoformat().replace("+00:00", "Z"),
+            }
+        ]
+
         assert serializer.data == {
             "id_ride": ride.id_ride,
             "status": ride.status,
@@ -19,6 +31,7 @@ class TestRideSerializer:
             "dropoff_latitude": float(ride.dropoff_latitude),
             "dropoff_longitude": float(ride.dropoff_longitude),
             "pickup_time": ride.pickup_time.isoformat().replace("+00:00", "Z"),
+            "todays_ride_events": todays_ride_events,
         }
 
 

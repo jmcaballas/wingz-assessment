@@ -67,4 +67,4 @@ class RideEvent(TimeStampedModel):
         verbose_name_plural = _("ride events")
 
     def __str__(self):
-        return f"Ride Event for Ride #{self.id_ride.id_ride}"
+        return f"{self.created_at} - Ride Event for Ride #{self.id_ride.id_ride}"
