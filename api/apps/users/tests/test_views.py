@@ -6,7 +6,7 @@ from apps.utils.test_models import TestModel
 
 
 @pytest.mark.django_db
-class TestDepartmentViewSet(TestModel):
+class TestUserViewSet(TestModel):
     namespace = "users:users-list"
 
     def test_list_unauthenticated(self, api_client):
