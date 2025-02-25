@@ -55,6 +55,7 @@ THIRDPARTY_APPS = [
 ]
 INTERNAL_APPS = [
     "apps.users",
+    "apps.rides",
 ]
 
 

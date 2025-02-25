@@ -12,13 +12,16 @@ class User(AbstractUser):
         ADMIN = "Admin", _("Admin")
         USER = "User", _("User")
 
-    email = models.EmailField(_("email address"), max_length=150, unique=True)
+    id_user = models.AutoField(primary_key=True)
     role = models.CharField(
         _("role"),
         max_length=max_len_choices(RoleChoices),
         choices=RoleChoices.choices,
         default=RoleChoices.USER,
     )
+    first_name = models.CharField(_("first name"), max_length=150)
+    last_name = models.CharField(_("first name"), max_length=150)
+    email = models.EmailField(_("email address"), max_length=150, unique=True)
     phone_number = PhoneNumberField(_("phone number"), blank=True)
 
     class Meta:
