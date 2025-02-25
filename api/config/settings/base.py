@@ -39,6 +39,9 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # Application definition
 
@@ -53,6 +56,7 @@ DEFAULT_APPS = [
 THIRDPARTY_APPS = [
     "rest_framework",
     "django_filters",
+    "debug_toolbar",
 ]
 INTERNAL_APPS = [
     "apps.users",
@@ -63,6 +67,7 @@ INTERNAL_APPS = [
 INSTALLED_APPS = DEFAULT_APPS + THIRDPARTY_APPS + INTERNAL_APPS
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
