@@ -4,12 +4,21 @@
 
 0. Setup `postgresql` database (`DB_NAME`, `DB_USER`, and `DB_PASSWORD` are needed in `.env`)
 1. Create and define `.env` in `api/` (use `.env.example` as guide)
-2. `poetry install`
+2. `poetry install --no-root`
 3. `cd api/`
 4. `poetry run python manage.py migrate`
 5. `poetry run python manage.py createsuperuser`
 6. `poetry run python manage.py runserver`
 7. To test, `poetry run pytest`
+
+## Notes
+
+- I structured the Django app to be modular with each feature having its own place in the `apps/` directory.
+- I placed an emphasis on unit testing (`test_models`, `test_filters`, `test_serializers`, `test_views`) with factories as an aid for easily creating test data.
+- I realized the importance of optimization using Django Debug Toolbar, which is similar to optimizing the frontend using Google Chrome's Lighthouse.
+  - In fetching the Rides list in the API, there were several queries unrelated to the Rides list itself such as user authentication.
+  - I was unable to reduce the number of queries due to time constraint.
+- I used the Euclidean distance as a faster and simpler way of calculating the distance between two points instead of other more accurate calculations due to time constraint.
 
 ## Bonus - SQL
 
@@ -39,8 +48,14 @@ GROUP BY month, driver
 ORDER BY month, driver;
 ```
 
-To run in Django, run the reports file as:
+To run in Django, run the reports file in the shell as:
 
 ```python
 from apps.rides.reports import get_long_trips_report
+```
+
+To access the shell:
+
+```bash
+poetry run python manage.py shell
 ```

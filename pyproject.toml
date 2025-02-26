@@ -16,6 +16,7 @@ dependencies = [
     "django-filter (>=25.1,<26.0)",
     "django-phonenumber-field[phonenumberslite] (>=8.0.0,<9.0.0)",
 ]
+package-mode = false
 
 [tool.pytest.ini_options]
 python_files = [
